@@ -1,0 +1,75 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Mortgage Calculator</h1>
+    <p class="lead">
+        The Mortgage Calculator helps you:
+        <ul>
+            <li>Choose the right loan for you</li>
+            <li>The Interests and Repayment on your loan</li>
+        </ul>
+    </p>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <form class="form-horizontal">
+
+
+            <fieldset>
+                <!-- Form Name -->
+                <legend>Calculator</legend>
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="txtLoanAmount">Borrowed Amount<span class="clsMandatory">*</span></label>
+                    <div class="col-md-4">
+                        <input id="txtLoanAmount" name="txtLoanAmount" type="number"  placeholder="0" class="form-control input-md" maxlength="8"  min="1"
+                  step="1"             onkeypress="return event.charCode >= 48 && event.charCode <= 57" >
+                        <span class="help-block">I would like to borrow</span>
+                    </div>
+                    <label class="col-md-2 control-label" for="textLoanDuration">Loan Duration (Years)<span class="clsMandatory">*</span></label>
+                    <div class="col-md-4">
+                        <input id="textLoanDuration" name="textLoanDuration" type="number" placeholder="0"  min="1"
+                  step="1"  onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="form-control input-md" maxlength="3"   >
+                        <span class="help-block">Over (years)</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="textinput">Mortage Type<span class="clsMandatory">*</span></label>
+                    <div class="col-md-4">
+                        <select class="form-control dropdown" id="cmbMortgageType" onchange="filterMortages();"></select>
+                        <span class="help-block">Repayment Type</span>
+                    </div>
+                    <label class="col-md-2 control-label" for="textinput">Mortages<span class="clsMandatory">*</span></label>
+                    <div class="col-md-4">
+                        <select class="form-control dropdown" style="max-width:350px;" id="cmbMortgages"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-2" style="float:right;">
+                        <input type="button"  class="form-control btn  btn-success" style="background-color:yellow;color:black;" value="Calculate" onclick="getRepaymentDetails();" />
+                    </div>
+                </div>
+                <div class="form-group" id="divRepaymentResult" style="margin-bottom:30px;padding: 20px 0px 0px 100px;width:90%;">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr  style="background-color:yellow;">
+                                <th><label>Total Loan Repayment</label></th>
+                                <th><label>Total Interest Paid</label></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><label id="lblTotalLoanRepayment"></label></td>
+                                <td><label id="lblTotalInterestCharged"></label></td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                    
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
